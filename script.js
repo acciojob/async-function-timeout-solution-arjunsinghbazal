@@ -1,14 +1,17 @@
-const text = document.getElementById("text");
-const delay = document.getElementById("delay");
-const btn = document.getElementById("btn");
-const output = document.getElementById("output");
+// JavaScript code
+const delayText = async () => {
+  const text = document.getElementById("text").value;
+  const delay = document.getElementById("delay").value * 1000;
+  const output = document.getElementById("output");
 
-//your code here
-async function showMessage() {
-  const message = text.value;
-  const delayVal = delay.value;
-  await new Promise((resolve) => setTimeout(resolve, delayVal));
-  output.innerText = message;
-}
+  // Clear any existing text in output
+  output.innerText = "";
 
-btn.addEventListener("click", showMessage);
+  // Wait for the specified delay
+  await new Promise((resolve) => setTimeout(resolve, delay));
+
+  // Display the text in output
+  output.innerText = text;
+};
+
+document.getElementById("btn").addEventListener("click", delayText);
